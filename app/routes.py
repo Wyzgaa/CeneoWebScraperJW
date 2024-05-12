@@ -25,5 +25,5 @@ def product(product_id):
 
 @app.route('/hello/<name>')
 @app.route('/hello/')
-def hello(name="Koczkodan"):  
+def hello(name="NAME"):  
     return f"Hello, {name}!"

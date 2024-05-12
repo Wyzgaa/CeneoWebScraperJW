@@ -1,3 +1,43 @@
-h1{
+html, body{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.content{
+    padding: 2.3rem;
+}
+header{
+    margin-bottom: 50px;
+}
+
+#title_h1{
     color: chocolate;
+    font-weight: 650;
+    font-size: 3.8rem;
+    /* text-shadow:black 1px 0 0; */
+}
+
+#page_info{
+    font-size: large;
+    /* text-align: center; */
+}
+
+footer{
+    text-align: center;
+    margin-top: auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-size: 50;
+    background-color: chocolate;
+}
+
+#footer_text{
+    font-weight: 50;
+    color: white;
+    font-size: large;
 }
