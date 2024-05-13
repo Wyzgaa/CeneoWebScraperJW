@@ -3,15 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
     <title>Ceneo.pl Web Scraper</title>
 </head>
 <body>
+    <header>
+        <h1 id="title_h1">Ceneo.pl Web Scraper</h1>
+    </header>
+        <nav class="navbar-nav navbar-expand-lg ">
+            <div class="container-fluid">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('index')}}"><i>Strona Główna</i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('extract')}}"><i>Ekstrakcja Opinii</i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('products')}}"><i>Lista Produktów</i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('author')}}"><i>O Autorze</i></a>
+                </li>
+            </div>
+        </nav>
     <div class="content">
-        <header>
-            <h1 id="title_h1">Ceneo.pl Web Scraper</h1>
-        </header>
+        
         <section id="page_info">
             {% block content %}
                 <p>To jest plik bazowy</p>

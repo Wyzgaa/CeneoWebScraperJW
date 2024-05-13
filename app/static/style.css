@@ -19,15 +19,14 @@ header{
     color: chocolate;
     font-weight: 650;
     font-size: 3.8rem;
-    /* text-shadow:black 1px 0 0; */
 }
 
 #page_info{
     font-size: large;
-    /* text-align: center; */
 }
 
 footer{
+    width: 100%;
     text-align: center;
     margin-top: auto;
     padding-top: 40px;
@@ -41,3 +40,17 @@ footer{
     color: white;
     font-size: large;
 }
+
+nav{
+    display: flex;
+    flex-direction: row;
+    background-color: chocolate;
+}
+
+i{
+    color: white;
+    font-size: large;
+}
+/* .nav-link{
+    padding: 0 2vh 0 2vh;
+} */
