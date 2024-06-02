@@ -9,16 +9,16 @@ body{
 }
 
 .content{
+    margin-left: 10%;
+    margin-right: 10%;
     padding: 2.3rem;
 }
-header{
-    margin-bottom: 50px;
-}
 
-#title_h1{
+#main_title{
     color: chocolate;
     font-weight: 650;
-    font-size: 3.8rem;
+    font-size: 3.3rem;
+    margin-right: 50px;
 }
 
 #page_info{
@@ -36,21 +36,23 @@ footer{
 }
 
 #footer_text{
-    font-weight: 50;
+    font-weight: 600;
     color: white;
-    font-size: large;
+    /* color: #34383B; */
+    font-size: larger;
 }
 
-nav{
-    display: flex;
-    flex-direction: row;
-    background-color: chocolate;
+
+.nav-item{
+    margin-left: 45px;
 }
 
-i{
-    color: white;
-    font-size: large;
+#navbar-links{
+    margin-top: 6px;
 }
-/* .nav-link{
-    padding: 0 2vh 0 2vh;
-} */
+
+.navbar{
+    background-color: lightgrey;
+}
+
+
