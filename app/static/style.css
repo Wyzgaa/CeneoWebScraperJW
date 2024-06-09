@@ -55,4 +55,15 @@ footer{
     background-color: lightgrey;
 }
 
+#product_table{
+    margin: auto;
+}
 
+#product_name_link{
+    color: black;
+}
+
+#opinion_table{
+    table-layout: auto;
+    font-size: 15px;
+}

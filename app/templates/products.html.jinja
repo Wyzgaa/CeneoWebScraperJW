@@ -3,5 +3,33 @@
     <h2>Lista produktów</h2>
 {% endblock title %}
 {% block content %}
-        {{products}}
+    <table id="product_table" class="table table-striped" style="justify-content: center; margin-top: 60px;">
+        <thead>
+            <tr>
+                <th><a>Nazwa</a></th>
+                <th>ID</th>
+                <th>Ilość opinii</th>
+                <th>Ilość zalet</th>
+                <th>Ilość wad</th>
+                <th>Średnia ocena</th>
+                <th>Plik json</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td><a href="{{ url_for('product', product_id=product['product_id']) }}" id="product_name_link">{{ product['product_name'] }}</a></td>
+                    <td>{{ product['product_id'] }}</td>
+                    <td>{{ product['opinions_count'] }}</td>
+                    <td>{{ product['pros_count'] }}</td>
+                    <td>{{ product['cons_count'] }}</td>
+                    <td>{{ product['avg_rating'] }}</td>
+                    <td>
+                        <a href="{{ url_for('download_json', product_id=product['product_id']) }}" class="btn btn-primary">Pobierz</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        {# {{products}} #}
 {% endblock content %}

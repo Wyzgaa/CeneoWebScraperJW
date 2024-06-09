@@ -59,7 +59,7 @@ def extract():
                         'opinions_count': len(opinions),
                         'pros_count': int(opinions.pros.astype(bool).sum()),
                         'cons_count': int(opinions.cons.astype(bool).sum()),
-                        'avg_rating': opinions.rating.mean(),
+                        'avg_rating': round(opinions.rating.mean(), 2),
                         'rating_distribution': opinions.rating.value_counts().reindex(np.arange(0,5.2,0.5), fill_value = 0).to_dict(),
                         'recommendation_distribution': opinions.recomendation.value_counts(dropna=False).reindex(['Polecam', 'Nie polecam', None]).to_dict()
 
@@ -89,7 +89,9 @@ def author():
 
 @app.route('/product/<product_id>')
 def product(product_id):
-    return render_template("product.html.jinja", product_id=product_id)
+    with open(f"app/data/opinions/{product_id}.json", "r", encoding="UTF-8") as jf:
+        product_opinions=json.load(jf)
+    return render_template("product.html.jinja", product_id=product_id, product_opinions=product_opinions)
 
 @app.route('/product/download_json/<product_id>')
 def download_json(product_id):
@@ -104,3 +106,25 @@ def download_csv(product_id):
 @app.route('/product/download_xlsx/<product_id>')
 def download_xlsx(product_id):
     return
+
+@app.route('/product/charts/<product_id>')
+def charts(product_id):
+    # opinions = pd.read_json(f"app/data/opinions/{product_id}.json")
+    # if not os.path.exists("app/static/images"):
+    #     os.mkdir("app/static/images")
+    
+    # recommendation_distribution = opinions.recomendation.value_counts(dropna=False).reindex(['Polecam', 'Nie polecam', None])
+    # fig1, ax1 = plt.subplots()
+    # recommendation_distribution.plot.pie(
+    #     ax=ax1,
+    #     label='',
+    #     colors=['seagreen', 'palevioletred', 'thistle'],
+    #     labels=['Polecam', 'Nie polecam', 'Nie mam zdania']
+    # )
+    # ax1.set_title('Udział rekomendacji w opiniach')
+
+    
+    # image_path = f"app/static/images/charts_{product_id}.png"
+    # plt.savefig(image_path)
+    # plt.close(fig1)
+    return render_template("charts.html.jinja", product_id=product_id, image_path=url_for('static', filename=f'images/charts_{product_id}.png'))

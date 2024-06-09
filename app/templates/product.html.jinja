@@ -1,7 +1,60 @@
 {% extends "base.html.jinja" %}
 {%block title %}
-    <h2>Produkt {{product_id}}</h2>
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                <h2>Produkt {{product_id}}</h2>
+            </td>
+            <td style="text-align: right;">
+                <a href="{{ url_for('charts', product_id=product_id) }}" class="btn btn-primary">Wykresy</a>
+                <a href="{{ url_for('download_json', product_id=product_id) }}" class="btn btn-primary">Pobierz plik json</a>
+            </td>
+        </tr>
+    </table>
 {% endblock title %}
 {% block content %}
-         <p>To jest strona z opiniami o produkcie {{product_id}}</p>
+        <table id="opinion_table" class="table table-striped" style="justify-content: center; margin-top: 60px;">
+        <thead>
+            <tr>
+                <th>Autor</th>
+                <th>Rekomendacja</th>
+                <th>Ocena</th>
+                <th>Treść</th>
+                <th>Zalety</th>
+                <th>Wady</th>
+                <th>Ilość polubień</th>
+                <th>Ilość nie polubień</th>
+                <th>Data opublikowania</th>
+                <th>Data zakupu</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for opinion in product_opinions %}
+                <tr>
+                    <td>{{ opinion['author'] }}</td>
+                    <td>{{ opinion['recomendation'] }}</td>
+                    <td>{{ opinion['rating'] }}</td>
+                    <td>{{ opinion['content'] }}</td>
+                    <td>
+                        <ul style="padding: 0;">
+                            {% for pro in opinion['pros'] %}
+                                <li>{{pro}}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <ul style="padding-left: 20px;">
+                            {% for con in opinion['cons'] %}
+                                <li>{{con}}</li>
+                            {% endfor %}
+                        </ul> 
+                    </td>
+                    <td>{{ opinion['useuful'] }}</td>
+                    <td>{{ opinion['useless'] }}</td>
+                    <td>{{ opinion['publish_date'] }}</td>
+                    <td>{{ opinion['purchase_date'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock content %}
